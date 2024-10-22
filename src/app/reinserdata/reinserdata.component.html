@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="header">
+      <div class="user-info">
+        <img src="icons/personoutline.png" alt="user icon" class="user-icon">
+        <div class="welcome-text">
+          <h2>Bienvenido<br>Miguel</h2>
+        </div>
+      </div>
+    </div>
+  
+    <div class="categories-section">
+      <h1>Elige tu categoría</h1>
+      <div class="categories-grid">
+        <div class="category-row">
+          <div class="category-card cjdr" (click)="navigateTo('cjdr')">
+            <img src="icons/Reinserdata/CJDRicon.png" alt="CJDR">
+            <h3>CJDR</h3>
+          </div>
+          <div class="category-card soa"  (click)="navigateTo('soa')">
+            <img src="icons/Reinserdata/SOAicon.png" alt="SOA">
+            <h3>SOA</h3>
+          </div>
+        </div>
+        <div class="category-row" (click)="navigateTo('paspe')">
+          <div class="category-card paspe">
+            <img src="icons/Reinserdata/PASPEicon.png" alt="PASPE">
+            <h3>PASPE</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer">
+      <img src="logos/ministeriologo.png" alt="Ministerio" class="footer-logo">
+      <img src="logos/pronacejlogo.png" alt="Pronacej" class="footer-logo">
+    </div>
+  </div>

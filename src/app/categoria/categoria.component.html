@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="header">
+      <div class="user-info">
+        <img src="icons/personoutline.png" alt="user icon" class="user-icon">
+        <div class="welcome-text">
+          <h2>Bienvenido<br>Miguel</h2>
+        </div>
+      </div>
+    </div>
+  
+    <div class="categories-section">
+      <h1>Elige tu categoría</h1>
+      
+      <div class="categories-grid">
+        <!-- Primera fila -->
+        <div class="category-row">
+          <div class="category-card reinserdata" (click)="navigateTo('reinserdata')"><!---->
+            <img src="icons/reinserdataicon.png" alt="Reinserdata">
+            <h3>Reinserdata</h3>
+            <p>Estadística general</p>
+          </div>
+  
+          <div class="category-card infojoven" ><!--(click)="navigateTo('infojoven')"-->
+            <img src="icons/infojovenicon.png" alt="Infojoven">
+            <h3>Infojoven</h3>
+            <p>Comunidad y eventos</p>
+          </div>
+        </div>
+  
+        <!-- Segunda fila -->
+        <div class="category-row">
+          <div class="category-card insertate" ><!--(click)="navigateTo('insertate')"-->
+            <img src="icons/insertateicon.png" alt="Insertate">
+            <h3>Insert&#64;te</h3>
+            <p>Bolsa laboral y más</p>
+          </div>
+  
+          <div class="category-card pronacej" (click)="navigateTo('pronacejdigital')"><!---->
+            <img src="icons/pronacejdigitalicon.png" alt="Pronacej Digital">
+            <h3>Pronacej Digital</h3>
+            <p>Información institucional</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer">
+      <img src="logos/ministeriologo.png" alt="Ministerio" class="footer-logo">
+      <img src="logos/pronacejlogo.png" alt="Pronacej" class="footer-logo">
+    </div>
+  </div>
