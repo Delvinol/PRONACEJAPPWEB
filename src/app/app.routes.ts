@@ -12,6 +12,11 @@ import { RegisterComponent } from './register/register.component';
 import { ReportediarioComponent } from './reinserdata/cjdr/reportediario/reportediario.component';
 import { GrPoblacionCJDRComponent } from './reinserdata/cjdr/reportediario/gr-poblacion-cjdr/gr-poblacion-cjdr.component';
 import { GrProcesadosCJDRComponent } from './reinserdata/cjdr/reportediario/gr-procesados-cjdr/gr-procesados-cjdr.component';
+import { GrIngresosCJDRComponent } from './reinserdata/cjdr/reportediario/gr-ingresos-cjdr/gr-ingresos-cjdr.component';
+import { GrMayoresCJDRComponent } from './reinserdata/cjdr/reportediario/gr-mayores-cjdr/gr-mayores-cjdr.component';
+import { PoblacionedadsimpleComponent } from './reinserdata/cjdr/poblacionedadsimple/poblacionedadsimple.component';
+import { GrPoblacionEdadSimpleComponent } from './reinserdata/cjdr/poblacionedadsimple/gr-poblacion-edad-simple/gr-poblacion-edad-simple.component';
+
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -26,5 +31,10 @@ export const routes: Routes = [
   { path: 'recursoshumanos', component: RecursoshumanosComponent },
   { path: 'reportediario', component:ReportediarioComponent },
   { path: 'grPoblacionCJDR', component:GrPoblacionCJDRComponent },
-  { path: 'grProcesadosCJDR', component: GrProcesadosCJDRComponent}
+  { path: 'grProcesadosCJDR', component: GrProcesadosCJDRComponent},
+  { path: 'grIngresosCJDR', component: GrIngresosCJDRComponent},
+  { path: 'grMayoresCJDR', component: GrMayoresCJDRComponent},
+  { path: 'poblacionedadsimple', component: PoblacionedadsimpleComponent},
+  { path: 'grPoblacionEdadSimple', component: GrPoblacionEdadSimpleComponent}
+
 ];

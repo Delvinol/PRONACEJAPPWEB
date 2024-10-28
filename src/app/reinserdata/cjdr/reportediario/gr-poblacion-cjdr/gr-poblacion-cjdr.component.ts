@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { CJDRService } from '../../../../cjdr.service';
 import { ActivatedRoute } from '@angular/router';
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(...registerables);
 
@@ -18,7 +18,6 @@ interface CJDRData {
 })
 export class GrPoblacionCJDRComponent implements OnInit {
   reportData: CJDRData[] = [];
-
   totalPoblacion: number = 0;
   chart: any;
 
@@ -34,6 +33,7 @@ export class GrPoblacionCJDRComponent implements OnInit {
     '#C0CA33', // Pronacej9
     '#FFB300'  // Pronacej10
   ];
+
   constructor(private route: ActivatedRoute, private cjdrService: CJDRService) {}
 
   ngOnInit() {
@@ -44,22 +44,13 @@ export class GrPoblacionCJDRComponent implements OnInit {
       }
     });
   }
+
   private getData(fecha: string) {
     this.cjdrService.getDailyCJDRData(fecha).subscribe(data => {
       this.reportData = data;
       this.calculateTotal();
       this.setupChart();
     });
-  }
-
-  onHome() {
-    
-    console.log('Navegando a home');
-  }
-
-  onBack() {
-    
-    console.log('Navegando hacia atrás');
   }
 
   private calculateTotal() {
@@ -85,9 +76,7 @@ export class GrPoblacionCJDRComponent implements OnInit {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          legend: {
-            display: false
-          },
+          legend: { display: false },
           tooltip: {
             callbacks: {
               label: (context) => {
@@ -96,21 +85,39 @@ export class GrPoblacionCJDRComponent implements OnInit {
                 return `${value} (${percentage}%)`;
               }
             }
+          },
+          datalabels: {
+            anchor: 'end',
+            align: 'end',
+            formatter: (value, context) => {
+              const rawValue = value as number;
+              const total = this.totalPoblacion; // Total general de población
+              const percentage = ((rawValue / total) * 100).toFixed(1);
+              return rawValue > 0 ? `${percentage}%` : ''; // Muestra el porcentaje solo si es mayor a 0
+            },
+            color: '#000',
+            font: { weight: 'bold' }
           }
         },
         scales: {
           x: {
             beginAtZero: true,
-            grid: {
-            }
+            grid: { display: false } // Opcional: ocultar las líneas de la cuadrícula
           },
           y: {
-            grid: {
-              display: false,
-            }
+            grid: { display: false }
           }
         }
-      }
+      },
+      plugins: [ChartDataLabels] // Asegúrate de incluir el plugin aquí
     });
+  }
+
+  onHome() {
+    console.log('Navegando a home');
+  }
+
+  onBack() {
+    console.log('Navegando hacia atrás');
   }
 }

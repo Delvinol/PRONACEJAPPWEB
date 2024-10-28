@@ -14,7 +14,7 @@
   
     <div class="date-section">
         <label class="date-label">Fecha</label>
-        <input type="date" (change)="onDateChange($event)" />
+        <input type="date" [value]="fechaSeleccionada" (change)="onDateChange($event)" />
       </div>
       
   
@@ -42,7 +42,7 @@
   
       <div class="grid-row">
         <!-- Income/Outcome Card -->
-        <div class="option-card movement">
+        <div class="option-card movement" (click)="navigateTo('grIngresosCJDR')">
           <div class="light-effect"></div>
           <div class="card-content">
             <img src="icons/Reinserdata/CJDR/reportediario/03.png" alt="CJDR">
@@ -51,7 +51,7 @@
         </div>
   
         <!-- Age Card -->
-        <div class="option-card age">
+        <div class="option-card age" (click)="navigateTo('grMayoresCJDR')">
           <div class="light-effect"></div>
           <div class="card-content">
             <img src="icons/Reinserdata/CJDR/reportediario/04.png" alt="CJDR">

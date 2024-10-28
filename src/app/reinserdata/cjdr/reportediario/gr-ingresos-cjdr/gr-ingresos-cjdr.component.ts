@@ -1,31 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { CJDRService } from '../../../../cjdr.service';
+import { CJDRService, CJDRData } from '../../../../cjdr.service';
 import { ActivatedRoute } from '@angular/router';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(...registerables, ChartDataLabels);
 
-
-interface CJDRData {
-  centro_cjdr: string;
-  procesados_cjdr: number;
-  sentenciados_cjdr: number;
-}
-
 @Component({
-  selector: 'app-gr-procesados-cjdr',
-  templateUrl: './gr-procesados-cjdr.component.html',
-  styleUrls: ['./gr-procesados-cjdr.component.css']
+  selector: 'app-gr-ingresos-cjdr',
+  templateUrl: './gr-ingresos-cjdr.component.html',
+  styleUrls: ['./gr-ingresos-cjdr.component.css']
 })
-export class GrProcesadosCJDRComponent implements OnInit {
+export class GrIngresosCJDRComponent implements OnInit {
   reportData: CJDRData[] = [];
-  totalProcesados: number = 0;
-  totalSentenciados: number = 0;
-  
+  totalIngresos: number = 0;
+  totalEgresos: number = 0;
   chart: any;
-
-  colors: string[] = ['#4682B4', '#FB8C00']; // Azul para procesados, naranja para sentenciados
+  colors: string[] = ['#2E8B57', '#FF6347']; // Verde para ingresos, rojo para egresos
 
   constructor(private route: ActivatedRoute, private cjdrService: CJDRService) {}
 
@@ -47,12 +38,12 @@ export class GrProcesadosCJDRComponent implements OnInit {
   }
 
   private calculateTotals() {
-    this.totalProcesados = this.reportData.reduce((sum, item) => sum + item.procesados_cjdr, 0);
-    this.totalSentenciados = this.reportData.reduce((sum, item) => sum + item.sentenciados_cjdr, 0);
+    this.totalIngresos = this.reportData.reduce((sum, item) => sum + item.ingresos_cjdr, 0);
+    this.totalEgresos = this.reportData.reduce((sum, item) => sum + item.egresos_cjdr, 0);
   }
 
   private setupChart() {
-    const ctx = document.getElementById('stackedBarChart') as HTMLCanvasElement;
+    const ctx = document.getElementById('stackedBarChartIngresosEgresos') as HTMLCanvasElement;
     if (!ctx) return;
 
     this.chart = new Chart(ctx, {
@@ -61,13 +52,13 @@ export class GrProcesadosCJDRComponent implements OnInit {
         labels: this.reportData.map(item => item.centro_cjdr),
         datasets: [
           {
-            label: 'Procesados',
-            data: this.reportData.map(item => item.procesados_cjdr),
+            label: 'Ingresos',
+            data: this.reportData.map(item => item.ingresos_cjdr),
             backgroundColor: this.colors[0]
           },
           {
-            label: 'Sentenciados',
-            data: this.reportData.map(item => item.sentenciados_cjdr),
+            label: 'Egresos',
+            data: this.reportData.map(item => item.egresos_cjdr),
             backgroundColor: this.colors[1]
           }
         ]
@@ -88,10 +79,7 @@ export class GrProcesadosCJDRComponent implements OnInit {
             callbacks: {
               label: (context) => {
                 const value = context.raw as number;
-                const percentage = (
-                  (value / (this.totalProcesados + this.totalSentenciados)) *
-                  100
-                ).toFixed(1);
+                const percentage = ((value / (this.totalIngresos + this.totalEgresos)) * 100).toFixed(1);
                 return `${context.dataset.label}: ${value} (${percentage}%)`;
               }
             }
@@ -100,7 +88,7 @@ export class GrProcesadosCJDRComponent implements OnInit {
             anchor: 'end',
             align: 'end',
             formatter: (value, context) => {
-              const total = this.totalProcesados + this.totalSentenciados;
+              const total = this.totalIngresos + this.totalEgresos;
               const percentage = ((value / total) * 100).toFixed(1);
               return value > 0 ? `${percentage}%` : '';
             },
@@ -122,8 +110,6 @@ export class GrProcesadosCJDRComponent implements OnInit {
       }
     });
   }
-
-
 
   onHome() {
     console.log('Navegando a home');

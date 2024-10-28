@@ -4,28 +4,23 @@ import { CJDRService } from '../../../../cjdr.service';
 import { ActivatedRoute } from '@angular/router';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-Chart.register(...registerables, ChartDataLabels);
-
-
 interface CJDRData {
   centro_cjdr: string;
-  procesados_cjdr: number;
-  sentenciados_cjdr: number;
+  mayores_cjdr: number;
+  menores_cjdr: number;
 }
 
 @Component({
-  selector: 'app-gr-procesados-cjdr',
-  templateUrl: './gr-procesados-cjdr.component.html',
-  styleUrls: ['./gr-procesados-cjdr.component.css']
+  selector: 'app-gr-mayores-cjdr',
+  templateUrl: './gr-mayores-cjdr.component.html',
+  styleUrls: ['./gr-mayores-cjdr.component.css']
 })
-export class GrProcesadosCJDRComponent implements OnInit {
+export class GrMayoresCJDRComponent implements OnInit {
   reportData: CJDRData[] = [];
-  totalProcesados: number = 0;
-  totalSentenciados: number = 0;
-  
+  totalMayores: number = 0;
+  totalMenores: number = 0;
   chart: any;
-
-  colors: string[] = ['#4682B4', '#FB8C00']; // Azul para procesados, naranja para sentenciados
+  colors: string[] = ['#4682B4', '#FB8C00']; // Azul para mayores, naranja para menores
 
   constructor(private route: ActivatedRoute, private cjdrService: CJDRService) {}
 
@@ -47,8 +42,8 @@ export class GrProcesadosCJDRComponent implements OnInit {
   }
 
   private calculateTotals() {
-    this.totalProcesados = this.reportData.reduce((sum, item) => sum + item.procesados_cjdr, 0);
-    this.totalSentenciados = this.reportData.reduce((sum, item) => sum + item.sentenciados_cjdr, 0);
+    this.totalMayores = this.reportData.reduce((sum, item) => sum + item.mayores_cjdr, 0);
+    this.totalMenores = this.reportData.reduce((sum, item) => sum + item.menores_cjdr, 0);
   }
 
   private setupChart() {
@@ -61,69 +56,64 @@ export class GrProcesadosCJDRComponent implements OnInit {
         labels: this.reportData.map(item => item.centro_cjdr),
         datasets: [
           {
-            label: 'Procesados',
-            data: this.reportData.map(item => item.procesados_cjdr),
+            label: 'Mayores',
+            data: this.reportData.map(item => item.mayores_cjdr),
             backgroundColor: this.colors[0]
           },
           {
-            label: 'Sentenciados',
-            data: this.reportData.map(item => item.sentenciados_cjdr),
+            label: 'Menores',
+            data: this.reportData.map(item => item.menores_cjdr),
             backgroundColor: this.colors[1]
           }
         ]
       },
       options: {
-        indexAxis: 'y', // Mantiene las barras horizontales
+        indexAxis: 'y',
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
           legend: {
             position: 'bottom',
-            align: 'start', // Mueve la leyenda a la izquierda
-            labels: {
-              padding: 20 // Espacio entre la leyenda y la gráfica
-            }
+            align: 'start',
+            labels: { padding: 20 }
           },
           tooltip: {
             callbacks: {
               label: (context) => {
-                const value = context.raw as number;
-                const percentage = (
-                  (value / (this.totalProcesados + this.totalSentenciados)) *
-                  100
-                ).toFixed(1);
-                return `${context.dataset.label}: ${value} (${percentage}%)`;
+                const rawValue = context.raw as number;
+                const total = context.dataset.label === 'Mayores'
+                  ? rawValue + this.reportData[context.dataIndex].menores_cjdr
+                  : rawValue + this.reportData[context.dataIndex].mayores_cjdr;
+                const percentage = ((rawValue / total) * 100).toFixed(1);
+          
+                // Retorna el label solo si el porcentaje es mayor a 0
+                return rawValue > 0 ? `${context.dataset.label}: ${rawValue} (${percentage}%)` : '';
               }
             }
-          },
+          }
+          ,
           datalabels: {
             anchor: 'end',
             align: 'end',
             formatter: (value, context) => {
-              const total = this.totalProcesados + this.totalSentenciados;
-              const percentage = ((value / total) * 100).toFixed(1);
-              return value > 0 ? `${percentage}%` : '';
+              const rawValue = value as number;
+              const total = this.reportData[context.dataIndex].mayores_cjdr + this.reportData[context.dataIndex].menores_cjdr;
+              const percentage = ((rawValue / total) * 100).toFixed(1);
+          
+              // Retorna el porcentaje solo si es mayor a 0
+              return rawValue > 0 ? `${percentage}%` : '';
             },
             color: '#000',
-            font: {
-              weight: 'bold'
-            }
+            font: { weight: 'bold' }
           }
         },
         scales: {
-          x: {
-            stacked: true,
-            beginAtZero: true
-          },
-          y: {
-            stacked: true
-          }
+          x: { stacked: true, beginAtZero: true },
+          y: { stacked: true }
         }
       }
     });
   }
-
-
 
   onHome() {
     console.log('Navegando a home');

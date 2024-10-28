@@ -3,22 +3,29 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reportediario',
-  standalone: true,
   templateUrl: './reportediario.component.html',
-  styleUrls: ['./reportediario.component.css']
+  styleUrls: ['./reportediario.component.css'],
 })
 export class ReportediarioComponent {
   fechaSeleccionada: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    // Cargar la fecha desde localStorage si existe
+    const savedFecha = localStorage.getItem('fechaSeleccionada');
+    if (savedFecha) {
+      this.fechaSeleccionada = savedFecha;
+    }
+  }
 
   navigateTo(route: string): void {
     this.router.navigate([`/${route}`], { queryParams: { fecha: this.fechaSeleccionada } });
   }
 
-  // Método para manejar la selección de fecha
   onDateChange(event: Event): void {
     const input = event.target as HTMLInputElement;
-    this.fechaSeleccionada = input.value;  // Suponiendo que usas un input de tipo fecha
+    this.fechaSeleccionada = input.value;
+
+    // Guardar la fecha en localStorage
+    localStorage.setItem('fechaSeleccionada', this.fechaSeleccionada);
   }
 }
