@@ -1,0 +1,52 @@
+<div class="main-container">
+    <!-- Header -->
+    <div class="header">
+      <button class="home-button" (click)="onHome()">
+        <i class="fas fa-home"></i>
+      </button>
+      <h1>Procesados CJDR</h1>
+      <button class="back-button" (click)="onBack()">Atrás</button>
+    </div>
+  
+    <!-- Contenido principal -->
+    <div class="content">
+      <!-- Totales -->
+      <div class="totals-container">
+        <div class="total-box">
+          <div class="total-value">{{ totalProcesados }}</div>
+          <div class="total-label">Total Procesados</div>
+        </div>
+        <div class="total-box">
+          <div class="total-value">{{ totalSentenciados }}</div>
+          <div class="total-label">Total Sentenciados</div>
+        </div>
+      </div>
+  
+      <!-- Gráfico -->
+      <div class="chart-container">
+        <canvas id="stackedBarChart"></canvas>
+      </div>
+  
+<!-- Lista de centros -->
+<div class="centers-list">
+  <div class="center-item" *ngFor="let center of reportData; let i = index">
+    <div class="center-label">
+      <div class="percentage-box">
+        {{ center.procesados_cjdr }} / {{ center.sentenciados_cjdr }}
+      </div>
+      <div class="center-name">
+        {{ center.centro_cjdr }}
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+  
+    <!-- Footer -->
+    <div class="footer">
+      <img src="logos/ministeriologo.png" alt="Ministerio" class="ministry-logo">
+      <img src="logos/pronacejlogo.png" alt="Pronacej" class="pronacej-logo">
+    </div>
+  </div>
+  

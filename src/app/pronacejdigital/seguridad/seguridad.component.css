@@ -1,3 +1,4 @@
+/* seguridad.component.scss */
 .container {
     padding: 16px;
     height: 100%;
@@ -40,7 +41,6 @@
       font-family: 'Montserrat', sans-serif;
     }
   }
-  
   
   .user-info {
     display: flex;
@@ -101,6 +101,13 @@
       transform: scale(1.02);
     }
   
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+    }
+  
     img {
       width: 100px;
       height: 100px;
@@ -116,26 +123,39 @@
       margin: 8px 0;
       text-align: center;
     }
-  
-    p {
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      margin: 0;
-      text-align: center;
-    }
   }
   
-  .seguridad {
-    background: linear-gradient(135deg, #0090d4, #0090d4);
+  /* Estilos específicos para cada tarjeta */
+  .intentos-fuga {
+    background: linear-gradient(135deg, #cad200, #cad200);
   }
   
-  .ejecucion {
-    background: linear-gradient(135deg, #474c55, #474c55);
+  .traslados {
+    background: linear-gradient(135deg, #00a3e2, #00a3e2);
   }
   
-  .recursos {
-    background: linear-gradient(135deg, #0090d4, #0090d4);
+  .fugas {
+    background: linear-gradient(135deg, #0090d4, #0277BD);
+  }
+  
+  .motines {
+    background: linear-gradient(135deg, #e62984, #bd216c);
+  }
+  
+  .reyertas {
+    background: linear-gradient(135deg, #e62984, #c02871);
+  }
+  
+  .operativos {
+    background: linear-gradient(135deg, #474c55, #5e6471);
+  }
+  
+  .megaoperativos {
+    background: linear-gradient(135deg, #0090d4, #0277BD);
+  }
+  
+  .recapturas {
+    background: linear-gradient(135deg, #fcea00, #c4b701);
   }
   
   .footer {
@@ -151,5 +171,3 @@
       width: auto;
     }
   }
-  
-  

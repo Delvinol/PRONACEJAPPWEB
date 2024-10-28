@@ -1,0 +1,77 @@
+<div class="register-container">
+  <div class="logo-container">
+    <img src="logos/logoapp.png" alt="Logo App" class="app-logo">
+  </div>
+  
+  <div class="form-container">
+    <h2 class="register-title">Solicitud de Registro</h2>
+    
+    <form (ngSubmit)="onRegister($event)" class="register-form">
+      <div class="input-group">
+        <label class="input-label">Nombres</label>
+        <div class="input-wrapper">
+          <img src="icons/register/01.png" alt="persona" class="input-icon">
+          <input
+            type="text"
+            [(ngModel)]="name"
+            name="name"
+            required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Apellidos</label>
+        <div class="input-wrapper">
+          <img src="icons/register/02.png" alt="apellidos" class="input-icon">
+          <input
+            type="text"
+            [(ngModel)]="lastName"
+            name="lastName"
+            required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Entidad</label>
+        <div class="input-wrapper">
+          <img src="icons/register/03.png" alt="entidad" class="input-icon">
+          <input
+            type="text"
+            [(ngModel)]="entity"
+            name="entity"
+            required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">N° de Dni</label>
+        <div class="input-wrapper">
+          <img src="icons/register/04.png" alt="dni" class="input-icon">
+          <input
+            type="text"
+            [(ngModel)]="dni"
+            name="dni"
+            maxlength="8"
+            pattern="[0-9]*"
+            required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">Email</label>
+        <div class="input-wrapper">
+          <img src="icons/register/05.png" alt="email" class="input-icon">
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            required>
+        </div>
+      </div>
+
+      <button type="submit" class="register-button">
+        Enviar
+      </button>
+    </form>
+  </div>
+</div>

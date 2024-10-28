@@ -1,0 +1,43 @@
+<div class="main-container">
+    <!-- Header -->
+    <div class="header">
+      <button class="home-button" (click)="onHome()">
+        <i class="fas fa-home"></i>
+      </button>
+      <h1>Población CJDR</h1>
+      <button class="back-button" (click)="onBack()">Atrás</button>
+    </div>
+  
+    <!-- Contenido principal -->
+    <div class="content">
+      <!-- Total box -->
+      <div class="total-container">
+        <div class="total-value">{{ totalPoblacion }}</div>
+        <div class="total-label">Total</div>
+      </div>
+  
+      <!-- Chart -->
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
+      </div>
+  
+      <!-- Lista de centros -->
+      <div class="centers-list">
+        <div class="center-item" *ngFor="let center of reportData; let i = index">
+          <div class="percentage-box" [style.background-color]="colors[i]">
+            {{ center.poblacion_cjdr }}
+          </div>
+          <div class="center-name">
+            {{ center.centro_cjdr }}
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer -->
+    <div class="footer">
+      <img src="logos/ministeriologo.png" alt="Ministerio" class="ministry-logo">
+      <img src="logos/pronacejlogo.png" alt="Pronacej" class="pronacej-logo">
+    </div>
+  </div>
+  

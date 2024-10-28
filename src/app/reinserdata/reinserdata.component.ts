@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reinserdata',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './reinserdata.component.html',
   styleUrl: './reinserdata.component.scss'
 })
