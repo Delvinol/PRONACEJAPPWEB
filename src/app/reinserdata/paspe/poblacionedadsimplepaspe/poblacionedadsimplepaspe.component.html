@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="header">
+      <button class="home-button" (click)="navigateTo('/')" [style.background-color]="'#00aae6'">
+        <i class="fas fa-home"></i>
+      </button>
+      
+      <div class="title">
+        <h2>Elegir fecha del gráfico</h2>
+      </div>
+      
+      <button class="back-button" (click)="goBack()" [style.background-color]="'#00aae6'">
+        Atrás
+      </button>
+    </div>
+
+    <div class="date-section">
+<h3>Fecha a buscar</h3>
+<div class="date-input-container">
+  <input 
+    matInput 
+    [matDatepicker]="picker" 
+    placeholder="Elegir Mes y Año" 
+    (dateChange)="onDateChange($event)"
+    class="date-picker"
+  >
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker 
+    #picker 
+    startView="multi-year" 
+    (monthSelected)="chosenMonthHandler($event, picker)" 
+    panelClass="month-picker" 
+  ></mat-datepicker>
+  <button 
+    class="search-button" 
+    (click)="searchData()" 
+    [style.background-color]="'#00aae6'"
+  >
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+</div>
+
+
+    <div class="filter-options">
+      <div class="checkbox-container">
+        <input 
+          type="radio" 
+          id="atendidos" 
+          name="filterType" 
+          [checked]="!isActive"
+          (change)="setFilterType(false)"
+        >
+        <label for="atendidos">ATENDIDOS: Población acumulada en un periodo</label>
+      </div>
+      
+      <div class="checkbox-container">
+        <input 
+          type="radio" 
+          id="activos" 
+          name="filterType" 
+          [checked]="isActive"
+          (change)="setFilterType(true)"
+        >
+        <label for="activos">ACTIVOS: Adolescentes que están siendo atendidos</label>
+      </div>
+    </div>
+
+    <div class="footer">
+      <img src="logos/ministeriologo.png" alt="Ministerio" class="footer-logo">
+      <img src="logos/pronacejlogo.png" alt="Pronacej" class="footer-logo">
+    </div>
+  </div>
