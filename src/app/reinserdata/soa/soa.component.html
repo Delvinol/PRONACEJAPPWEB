@@ -1,8 +1,8 @@
 <div class="container">
     <div class="header">
       <div class="navigation-buttons">
-        <button class="home-button">
-          <img src="icons/home.png" alt="Home">
+        <button class="home-button" (click)="navigateTo('categoria')">
+          <img src="icons/home.png" alt="Home" >
         </button>
         <div class="user-info">
           <img src="icons/personoutline.png" alt="user icon" class="user-icon">
@@ -10,7 +10,7 @@
             <h2>Bienvenido<br>Miguel</h2>
           </div>
         </div>
-        <button class="back-button">Atrás</button>
+        <button class="back-button" (click)="navigateTo('reinserdata')">Atrás</button>
       </div>
     </div>
   
@@ -18,12 +18,12 @@
       <h1>SOA<br>Elige tu categoría</h1>
       <div class="categories-grid">
         <div class="category-row">
-          <div class="category-card report"><!-- (click)="navigateTo('report')"-->
+          <div class="category-card report" (click)="navigateTo('reportediarioSOA')"><!-- -->
             <div class="light-effect"></div>
             <img src="icons/Reinserdata/CJDR/01poblaciontotal.png" alt="Reporte">
             <h3>Reporte diario</h3>
           </div>
-          <div class="category-card population" ><!--(click)="navigateTo('population')"-->
+          <div class="category-card population" (click)="navigateTo('poblacionedadsimpleSOA')"><!---->
             <div class="light-effect"></div>
             <img src="icons/Reinserdata/CJDR/02poblacion.png" alt="Población">
             <h3>Población<br>Edad Simple</h3>

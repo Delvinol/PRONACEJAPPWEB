@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { CJDRService } from '../../../../cjdr.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(...registerables, ChartDataLabels);
@@ -25,9 +25,9 @@ export class GrProcesadosCJDRComponent implements OnInit {
   
   chart: any;
 
-  colors: string[] = ['#4682B4', '#FB8C00']; // Azul para procesados, naranja para sentenciados
+  colors: string[] = ['#474c55', '#cad200']; // Azul para procesados, naranja para sentenciados
 
-  constructor(private route: ActivatedRoute, private cjdrService: CJDRService) {}
+  constructor(private route: ActivatedRoute, private cjdrService: CJDRService, private router: Router,) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -126,10 +126,10 @@ export class GrProcesadosCJDRComponent implements OnInit {
 
 
   onHome() {
-    console.log('Navegando a home');
+    this.router.navigate(['/categoria']);
   }
-
+  
   onBack() {
-    console.log('Navegando hacia atrás');
+    this.router.navigate(['/reportediario']);
   }
 }

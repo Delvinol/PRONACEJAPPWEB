@@ -1,0 +1,115 @@
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <div class="nav-buttons">
+      <button class="home-button" (click)="navigateTo('categoria')">
+        <i class="fas fa-home"></i>
+      </button>
+      <div class="title">
+        <h2>Elige una de las opciones</h2>
+      </div>
+      <button class="back-button" (click)="navigateTo('cjdr')">Atrás</button>
+    </div>
+  </div>
+
+  <!-- Date Section -->
+  <div class="date-section">
+    <h3>Fecha a buscar</h3>
+    <div class="date-input-container">
+      <input
+        type="month"
+        [(ngModel)]="selectedDate"
+        (ngModelChange)="onDateChange($event)"
+        class="date-picker"
+      >
+    </div>
+  </div>
+
+  <!-- Status Options -->
+  <div class="status-options">
+    <div class="checkbox-wrapper">
+      <input 
+        type="radio" 
+        id="activeStatus" 
+        name="status"
+        [checked]="isActivo"
+        (change)="toggleStatus('activo')"
+      >
+      <label for="activeStatus">ACTIVOS: Adolescentes que están siendo atendidos</label>
+    </div>
+    <div class="checkbox-wrapper">
+      <input 
+        type="radio" 
+        id="attendedStatus" 
+        name="status"
+        [checked]="isAtendido"
+        (change)="toggleStatus('atendido')"
+      >
+      <label for="attendedStatus">ATENDIDOS: Población acumulada en un periodo</label>
+    </div>
+  </div>
+
+  
+    <!-- Options Grid -->
+    <div class="options-grid">
+      <div class="grid-row">
+        <div class="option-card program" (click)="navigateTo('participaprogramaintervencioncjdr')"><!--  -->
+          <div class="light-effect"></div>
+          <div class="card-content">
+            <i class="fas fa-snowflake icon"></i>
+            <h3>Participa en programa o estrategia de intervención</h3>
+          </div>
+        </div>
+      </div>
+  
+      <div class="grid-row">
+        <div class="option-card mental-health" ><!-- (click)="navigateTo('mental-health')" -->
+          <div class="light-effect"></div>
+          <div class="card-content">
+            <i class="fas fa-user-friends icon"></i>
+            <h3>Salud mental</h3>
+          </div>
+        </div>
+        <div class="option-card gradual" ><!-- (click)="navigateTo('gradual')" -->
+          <div class="light-effect"></div>
+          <div class="card-content">
+            <i class="fas fa-balance-scale icon"></i>
+            <h3>Programas graduales</h3>
+          </div>
+        </div>
+      </div>
+  
+      <div class="grid-row">
+        <div class="option-card aggressors" ><!-- (click)="navigateTo('aggressors')" -->
+          <div class="light-effect"></div>
+          <div class="card-content">
+            <i class="fas fa-users icon"></i>
+            <h3>Agresores sexuales</h3>
+          </div>
+        </div>
+      </div>
+  
+      <div class="grid-row">
+        <div class="option-card drugs" ><!-- (click)="navigateTo('drugs')" -->
+          <div class="light-effect"></div>
+          <div class="card-content">
+            <i class="fas fa-book icon"></i>
+            <h3>Estrategias para consumidores de drogas</h3>
+          </div>
+        </div>
+        <div class="option-card family" ><!-- (click)="navigateTo('family')" -->
+          <div class="light-effect"></div>
+          <div class="card-content">
+            <i class="fas fa-chart-pie icon"></i>
+            <h3>Familia joven</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer -->
+    <div class="footer">
+      <img src="assets/images/imgministerio.png" alt="Ministerio" class="logo">
+      <img src="assets/images/logopronacej.png" alt="Pronacej" class="logo">
+    </div>
+  </div>

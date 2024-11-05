@@ -1,70 +1,42 @@
-<!-- gr-poblacion-edad-simple.component.html -->
 <div class="main-container">
-    <!-- Header -->
-    <div class="header">
-      <button class="home-button" (click)="onHome()">
-        <i class="fas fa-home"></i>
-      </button>
-      <h1>Población por Edad</h1>
-      <button class="back-button" (click)="onBack()">Atrás</button>
+  <!-- Header -->
+  <div class="header">
+    <button class="home-button" (click)="onHome()">
+      <i class="fas fa-home"></i>
+    </button>
+    <h1>Población por Edad</h1>
+    <button class="back-button" (click)="onBack()">Atrás</button>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <!-- Total box -->
+    <div class="total-container">
+      <div class="total-value">{{ totalPoblacion }}</div>
+      <div class="total-label">Total</div>
     </div>
-  
-    <!-- Filtro -->
-    <div class="filter-section">
-      <div class="date-picker">
-        <label>Fecha a buscar:</label>
-        <input 
-          type="date" 
-          [value]="selectedDate"
-          (change)="onDateSelect($event)"
-          class="date-input">
-      </div>
-  
-      <div class="type-selector">
-        <button 
-          [class.active]="isActiveSelected"
-          (click)="setTipoSeleccion(true)"
-          class="type-button">
-          ACTIVOS: Adolescentes que están siendo atendidos
-        </button>
-        <button 
-          [class.active]="!isActiveSelected"
-          (click)="setTipoSeleccion(false)"
-          class="type-button">
-          ATENDIDOS: Población acumulada en un periodo
-        </button>
-      </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <canvas id="barChart"></canvas>
     </div>
-  
-    <!-- Contenido principal -->
-    <div class="content" *ngIf="showChart">
-      <!-- Total box -->
-      <div class="total-container">
-        <div class="total-value">{{ totalPoblacion }}</div>
-        <div class="total-label">Total</div>
-      </div>
-  
-      <!-- Chart -->
-      <div class="chart-container">
-        <canvas id="barChart"></canvas>
-      </div>
-  
-      <!-- Lista de edades -->
-      <div class="age-list">
-        <div class="age-item" *ngFor="let item of reportData; let i = index">
-          <div class="percentage-box" [style.background-color]="colors[i]">
-            {{ item.cantidad }}
-          </div>
-          <div class="age-name">
-            {{ item.edad }}
-          </div>
+
+    <!-- Lista de edades -->
+    <div class="ages-list">
+      <div class="age-item" *ngFor="let age of agesList; let i = index">
+        <div class="percentage-box" [style.background-color]="colors[i]">
+          {{ age.value }}
+        </div>
+        <div class="age-name">
+          {{ age.label }}
         </div>
       </div>
     </div>
-  
-    <!-- Footer -->
-    <div class="footer">
-      <img src="assets/ministeriologo.png" alt="Ministerio" class="ministry-logo">
-      <img src="assets/pronacejlogo.png" alt="Pronacej" class="pronacej-logo">
-    </div>
   </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <img src="assets/logos/ministeriologo.png" alt="Ministerio" class="ministry-logo">
+    <img src="assets/logos/pronacejlogo.png" alt="Pronacej" class="pronacej-logo">
+  </div>
+</div>

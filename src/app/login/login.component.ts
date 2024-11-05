@@ -26,7 +26,7 @@ export class LoginComponent {
 
   onLogin(event: Event): void {
     event.preventDefault();
-    this.http.post('http://181.176.172.117:8081/api/v1/auth/authenticate', {
+    this.http.post('http://appconsulta.pronacej.gob.pe:8081/api/v1/auth/authenticate', {
       email: this.email,
       password: this.password
     }).subscribe({

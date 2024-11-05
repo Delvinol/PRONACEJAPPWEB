@@ -1,65 +1,67 @@
-<!-- filtro.component.html -->
 <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <button class="home-button" (click)="goHome()">
-        <i class="fas fa-home"></i>
-      </button>
-      
-      <div class="title">
-        <h2>Elegir fecha del gráfico</h2>
-      </div>
-      
-      <button class="back-button" (click)="goBack()">
-        Atrás
-      </button>
+  <!-- Header Section -->
+  <div class="header">
+    <button class="home-button" (click)="navigateTo('/')" [style.background-color]="'#00aae6'">
+      <i class="fas fa-home"></i>
+    </button>
+    
+    <div class="title">
+      <h2>Elegir fecha del gráfico</h2>
     </div>
-  
-    <!-- Main Content -->
-    <div class="content">
-      <div class="date-section">
-        <h3>Fecha a buscar</h3>
-        
-        <div class="date-picker-container">
-          <button class="date-picker-button" (click)="openMonthYearPicker()">
-            {{ selectedDate }}
-            <i class="fas fa-calendar"></i>
-          </button>
-          
-          <button class="search-button" (click)="showSelectedDate()">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-  
-        <div class="error-message" ><!--*ngIf="showDateError"-->
-          Formato de fecha incorrecto
-        </div>
-      </div>
-  
-      <div class="checkboxes">
-        <div class="checkbox-item">
-          <input type="checkbox" 
-                 id="activeCheck" 
-                 ><!--[(ngModel)]="activeChecked"-->
-          <label for="activeCheck">
-            ACTIVOS: Adolescentes que están siendo atendidos
-          </label>
-        </div>
-  
-        <div class="checkbox-item">
-          <input type="checkbox" 
-                 id="attendedCheck" 
-                 ><!--[(ngModel)]="attendedChecked"-->
-          <label for="attendedCheck">
-            ATENDIDOS: Población acumulada en un periodo
-          </label>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Footer -->
-    <div class="footer">
-        <img src="logos/ministeriologo.png" alt="Ministerio" class="logo">
-        <img src="logos/pronacejlogo.png" alt="Pronacej" class="logo">
+    
+    <button class="back-button" (click)="goBack()" [style.background-color]="'#00aae6'">
+      Atrás
+    </button>
+  </div>
+
+  <!-- Date Selection Section -->
+  <div class="date-section">
+    <h3>Fecha a buscar</h3>
+    <div class="date-input-container">
+      <input 
+        type="month" 
+        [(ngModel)]="selectedDate"
+        (ngModelChange)="onDateChange($event)"
+        class="date-picker"
+      >
+      <button 
+        class="search-button" 
+        (click)="searchData()"
+        [style.background-color]="'#00aae6'"
+      >
+        <i class="fas fa-search"></i>
+      </button>
     </div>
   </div>
+
+  <!-- Filter Options -->
+  <div class="filter-options">
+    <div class="checkbox-container">
+      <input 
+        type="radio" 
+        id="atendidos" 
+        name="filterType" 
+        [checked]="!isActive"
+        (change)="setFilterType(false)"
+      >
+      <label for="atendidos">ATENDIDOS: Población acumulada en un periodo</label>
+    </div>
+    
+    <div class="checkbox-container">
+      <input 
+        type="radio" 
+        id="activos" 
+        name="filterType" 
+        [checked]="isActive"
+        (change)="setFilterType(true)"
+      >
+      <label for="activos">ACTIVOS: Adolescentes que están siendo atendidos</label>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <img src="assets/logos/ministeriologo.png" alt="Ministerio" class="footer-logo">
+    <img src="assets/logos/pronacejlogo.png" alt="Pronacej" class="footer-logo">
+  </div>
+</div>

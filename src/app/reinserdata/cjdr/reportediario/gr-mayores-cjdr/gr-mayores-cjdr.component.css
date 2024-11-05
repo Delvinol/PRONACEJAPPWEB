@@ -70,7 +70,17 @@
   
   
   .total-value {
-    background-color: #4682B4;
+    background-color: #00a3e2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+  }
+
+  .total-value1 {
+    background-color: #fcea00;
     color: white;
     padding: 10px 20px;
     border-radius: 4px;

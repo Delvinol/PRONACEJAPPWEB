@@ -39,7 +39,7 @@ export class RegisterComponent {
       email: this.email
     };
 
-    this.http.post('http://181.176.172.117:8081/api/v1/auth/register', registerData)
+    this.http.post('http://appconsulta.pronacej.gob.pe:8081/api/v1/auth/register', registerData)
       .subscribe({
         next: () => {
           alert('La solicitud fue enviada');

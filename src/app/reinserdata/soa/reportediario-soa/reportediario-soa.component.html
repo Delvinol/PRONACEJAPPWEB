@@ -1,0 +1,51 @@
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="nav-buttons">
+        <button class="home-button" (click)="navigateTo('categoria')">
+          <i class="fas fa-home"></i>
+        </button>
+        <div class="title">
+          <h2>Elige una de las opciones</h2>
+        </div>
+        <button class="back-button" (click)="navigateTo('soa')">Atrás</button>
+      </div>
+    </div>
+  
+    <div class="date-section">
+        <label class="date-label">Fecha</label>
+        <input type="date" [value]="fechaSeleccionada" (change)="onDateChange($event)" />
+      </div>
+      
+  
+    <!-- Options Grid -->
+    <div class="options-grid">
+      <div class="grid-row">
+        <!-- Population Card -->
+        <div class="option-card population" (click)="navigateTo('grPoblacionSOA')"><!--  -->
+          <div class="light-effect"></div>
+          <div class="card-content">
+            <img src="icons/Reinserdata/CJDR/reportediario/01.png" alt="CJDR">
+            <h3>Población<br>SOA</h3>
+          </div>
+        </div>
+  
+        <!-- Process Card -->
+        <div class="option-card processed" (click)="navigateTo('grGeneroSOA')" ><!-- -->
+          <div class="light-effect"></div>
+          <div class="card-content">
+            <img src="icons/Reinserdata/CJDR/reportediario/02.png" alt="CJDR">
+            <h3>Población por<br>Género SOA</h3>
+          </div>
+        </div>
+      </div>
+  
+      
+    </div>
+  
+    <!-- Footer -->
+    <div class="footer">
+      <img src="logos/ministeriologo.png" alt="Ministerio" class="logo">
+      <img src="logos/pronacejlogo.png" alt="Pronacej" class="logo">
+    </div>
+  </div>

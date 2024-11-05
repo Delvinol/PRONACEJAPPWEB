@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { CJDRService } from '../../../../cjdr.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 interface CJDRData {
@@ -20,9 +20,9 @@ export class GrMayoresCJDRComponent implements OnInit {
   totalMayores: number = 0;
   totalMenores: number = 0;
   chart: any;
-  colors: string[] = ['#4682B4', '#FB8C00']; // Azul para mayores, naranja para menores
+  colors: string[] = ['#00a3e2', '#fcea00']; // Azul para mayores, naranja para menores
 
-  constructor(private route: ActivatedRoute, private cjdrService: CJDRService) {}
+  constructor(private route: ActivatedRoute, private cjdrService: CJDRService, private router: Router,) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -116,10 +116,10 @@ export class GrMayoresCJDRComponent implements OnInit {
   }
 
   onHome() {
-    console.log('Navegando a home');
+    this.router.navigate(['/categoria']);
   }
-
+  
   onBack() {
-    console.log('Navegando hacia atrás');
+    this.router.navigate(['/reportediario']);
   }
 }

@@ -1,0 +1,42 @@
+<div class="main-container">
+    <!-- Header -->
+    <div class="header">
+      <button class="home-button" (click)="onHome()">
+        <i class="fas fa-home"></i>
+      </button>
+      <h1>Participación en Programas</h1>
+      <button class="back-button" (click)="onBack()">Atrás</button>
+    </div>
+  
+    <!-- Contenido principal -->
+    <div class="content">
+      <!-- Total box -->
+      <div class="total-container">
+        <div class="total-value">{{ totalPoblacion }}</div>
+        <div class="total-label">Total</div>
+      </div>
+  
+      <!-- Chart -->
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
+      </div>
+  
+      <!-- Lista de programas -->
+      <div class="program-list">
+        <div class="program-item" *ngFor="let program of programList; let i = index">
+          <div class="percentage-box" [style.background-color]="colors[i]">
+            {{ program.value }}
+          </div>
+          <div class="program-name">
+            {{ program.label }}
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Footer -->
+    <div class="footer">
+      <img src="assets/images/imgministerio.png" alt="Ministerio" class="footer-logo">
+      <img src="assets/images/logopronacej.png" alt="Pronacej" class="footer-logo">
+    </div>
+  </div>

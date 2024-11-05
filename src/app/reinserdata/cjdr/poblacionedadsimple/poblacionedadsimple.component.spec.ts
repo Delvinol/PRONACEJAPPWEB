@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PoblacionedadsimpleComponent } from './poblacionedadsimple.component';
+import { PoblacionEdadSimpleComponent } from './poblacionedadsimple.component';
 
 describe('PoblacionedadsimpleComponent', () => {
-  let component: PoblacionedadsimpleComponent;
-  let fixture: ComponentFixture<PoblacionedadsimpleComponent>;
+  let component: PoblacionEdadSimpleComponent;
+  let fixture: ComponentFixture<PoblacionEdadSimpleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PoblacionedadsimpleComponent]
+      imports: [PoblacionEdadSimpleComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PoblacionedadsimpleComponent);
+    fixture = TestBed.createComponent(PoblacionEdadSimpleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

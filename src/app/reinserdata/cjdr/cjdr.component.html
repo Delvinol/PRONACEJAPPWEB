@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header">
       <div class="navigation-buttons">
-        <button class="home-button">
+        <button class="home-button" (click)="navigateTo('categoria')">
           <img src="icons/home.png" alt="Home">
         </button>
         <div class="user-info">
@@ -10,7 +10,7 @@
             <h2>Bienvenido<br>Miguel</h2>
           </div>
         </div>
-        <button class="back-button">Atrás</button>
+        <button class="back-button" (click)="navigateTo('reinserdata')">Atrás</button>
       </div>
     </div>
   
@@ -31,12 +31,12 @@
         </div>
         
         <div class="category-row">
-          <div class="category-card education"><!-- (click)="navigateTo('education')"-->
+          <div class="category-card education" (click)="navigateTo('situacioneducativaactual')"><!-- -->
             <div class="light-effect"></div>
             <img src="icons/Reinserdata/CJDR/03insercioneducativa.png" alt="Educación">
             <h3>Situación educativa actual</h3>
           </div>
-          <div class="category-card employment" ><!--(click)="navigateTo('employment')"-->
+          <div class="category-card employment" (click)="navigateTo('situacionlaboral')"><!---->
             <div class="light-effect"></div>
             <img src="icons/Reinserdata/CJDR/04insercionlaboral.png" alt="Empleo">
             <h3>Situación<br>laboral</h3>
@@ -44,12 +44,12 @@
         </div>
   
         <div class="category-row">
-          <div class="category-card infractions"><!-- (click)="navigateTo('infractions')"-->
+          <div class="category-card infractions" (click)="navigateTo('infraccioncometida')"><!-- -->
             <div class="light-effect"></div>
             <img src="icons/Reinserdata/CJDR/05infraccionescometidas.png" alt="Infracciones">
             <h3>Infracciones<br>cometidas</h3>
           </div>
-          <div class="category-card treatment"><!-- (click)="navigateTo('treatment')"-->
+          <div class="category-card treatment" (click)="navigateTo('tratamientodiferenciado')"><!-- -->
             <div class="light-effect"></div>
             <img src="icons/Reinserdata/CJDR/06tratamientodiferenciado.png" alt="Tratamiento">
             <h3>Tratamiento<br>diferenciado</h3>

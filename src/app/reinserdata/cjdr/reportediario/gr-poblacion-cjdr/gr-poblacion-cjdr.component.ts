@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { CJDRService } from '../../../../cjdr.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 
 Chart.register(...registerables);
 
@@ -22,19 +23,20 @@ export class GrPoblacionCJDRComponent implements OnInit {
   chart: any;
 
   colors: string[] = [
-    '#4682B4', // Pronacej1
-    '#43A047', // Pronacej2
-    '#FB8C00', // Pronacej3
-    '#E53935', // Pronacej4
-    '#8E24AA', // Pronacej5
-    '#3949AB', // Pronacej6
-    '#00ACC1', // Pronacej7
-    '#7CB342', // Pronacej8
-    '#C0CA33', // Pronacej9
-    '#FFB300'  // Pronacej10
+    '#00a3e2', // Pronacej1
+    '#e62984', // Pronacej2
+    '#474c55', // Pronacej3
+    '#fcea00', // Pronacej4
+    '#0090d4', // Pronacej5
+    '#cad200', // Pronacej6
+    '#49D200', // Pronacej7
+    '#D20019', // Pronacej8
+    '#D28500', // Pronacej9
+    '#A500D2'  // Pronacej10
   ];
 
-  constructor(private route: ActivatedRoute, private cjdrService: CJDRService) {}
+  constructor(private route: ActivatedRoute, private cjdrService: CJDRService,   private router: Router, 
+  ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -114,10 +116,10 @@ export class GrPoblacionCJDRComponent implements OnInit {
   }
 
   onHome() {
-    console.log('Navegando a home');
+    this.router.navigate(['/categoria']);
   }
-
+  
   onBack() {
-    console.log('Navegando hacia atrás');
+    this.router.navigate(['/reportediario']);
   }
 }

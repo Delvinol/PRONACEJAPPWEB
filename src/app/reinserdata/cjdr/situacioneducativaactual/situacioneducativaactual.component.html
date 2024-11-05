@@ -1,0 +1,22 @@
+<div class="main-container">
+    <div class="header">
+      <button class="back-button" (click)="onBack()" >Atrás</button>
+      <h1>Situación Educativa Actual</h1>
+    </div>
+  
+    <div class="content">
+      <div class="filter">
+        <input type="month" (change)="onFechaChange($event)" />
+        <select (change)="onEstadoChange($event)">
+          <option [value]="1">Activos</option>
+          <option [value]="0">Atendidos</option>
+        </select>
+        <button (click)="buscarDatos()">Buscar</button>
+      </div>
+  
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+  </div>
+  

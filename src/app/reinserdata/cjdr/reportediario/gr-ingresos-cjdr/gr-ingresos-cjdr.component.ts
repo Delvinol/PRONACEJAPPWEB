@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { CJDRService, CJDRData } from '../../../../cjdr.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(...registerables, ChartDataLabels);
@@ -16,9 +16,9 @@ export class GrIngresosCJDRComponent implements OnInit {
   totalIngresos: number = 0;
   totalEgresos: number = 0;
   chart: any;
-  colors: string[] = ['#2E8B57', '#FF6347']; // Verde para ingresos, rojo para egresos
+  colors: string[] = ['#e62984', '#00a3e2']; // Verde para ingresos, rojo para egresos
 
-  constructor(private route: ActivatedRoute, private cjdrService: CJDRService) {}
+  constructor(private route: ActivatedRoute, private cjdrService: CJDRService,  private router: Router,) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -112,10 +112,10 @@ export class GrIngresosCJDRComponent implements OnInit {
   }
 
   onHome() {
-    console.log('Navegando a home');
+    this.router.navigate(['/categoria']);
   }
-
+  
   onBack() {
-    console.log('Navegando hacia atrás');
+    this.router.navigate(['/reportediario']);
   }
 }

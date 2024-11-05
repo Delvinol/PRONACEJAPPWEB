@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class PronacejdigitalComponent {
   constructor(private router: Router) {}
 
-  navigateTo(route: string): void {
-    this.router.navigate([`/${route}`]);
+  navigateTo(route: string) {
+    this.router.navigate(['/' + route]);
   }
 }

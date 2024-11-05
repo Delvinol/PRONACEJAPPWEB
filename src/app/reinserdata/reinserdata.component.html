@@ -1,7 +1,7 @@
 <div class="container">
   <div class="header">
     <div class="navigation-buttons">
-      <button class="home-button">
+      <button class="home-button" (click)="navigateTo('categoria')">
         <img src="icons/home.png" alt="Home">
       </button>
       <div class="user-info">
@@ -10,7 +10,7 @@
           <h2>Bienvenido<br>Miguel</h2>
         </div>
       </div>
-      <button class="back-button">Atrás</button>
+      <button class="back-button" (click)="navigateTo('categoria')">Atrás</button>
     </div>
   </div>
   
