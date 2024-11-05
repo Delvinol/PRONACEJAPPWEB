@@ -1,22 +1,64 @@
-<div class="main-container">
-    <div class="header">
-      <button class="back-button" (click)="onBack()" >Atrás</button>
-      <h1>Situación Educativa Actual</h1>
+<div class="container">
+  <div class="header">
+    <button class="home-button" (click)="navigateTo('/')" [style.background-color]="'#00aae6'">
+      <i class="fas fa-home"></i>
+    </button>
+    
+    <div class="title">
+      <h2>Elegir fecha del gráfico</h2>
     </div>
-  
-    <div class="content">
-      <div class="filter">
-        <input type="month" (change)="onFechaChange($event)" />
-        <select (change)="onEstadoChange($event)">
-          <option [value]="1">Activos</option>
-          <option [value]="0">Atendidos</option>
-        </select>
-        <button (click)="buscarDatos()">Buscar</button>
-      </div>
-  
-      <div class="chart-container">
-        <canvas id="barChart"></canvas>
-      </div>
+    
+    <button class="back-button" (click)="goBack()" [style.background-color]="'#00aae6'">
+      Atrás
+    </button>
+  </div>
+
+  <div class="date-section">
+    <h3>Fecha a buscar</h3>
+    <div class="date-input-container">
+      <input 
+        type="text" 
+        (change)="onDateChange($event)" 
+        placeholder="YYYY-MM" 
+        class="date-picker"
+        
+      >
+      <button 
+        class="search-button" 
+        (click)="searchData()"
+        [style.background-color]="'#00aae6'"
+      >
+        <i class="fas fa-search"></i>
+      </button>
     </div>
   </div>
-  
+
+  <div class="filter-options">
+    <div class="checkbox-container">
+      <input 
+        type="radio" 
+        id="situacion" 
+        name="filterType" 
+        [checked]="!isActive"
+        (change)="setFilterType(false)"
+      >
+      <label for="situacion">ATENDIDOS</label>
+    </div>
+    
+    <div class="checkbox-container">
+      <input 
+        type="radio" 
+        id="activos" 
+        name="filterType" 
+        [checked]="isActive"
+        (change)="setFilterType(true)"
+      >
+      <label for="activos">ACTIVOS: Alumnos actualmente matriculados</label>
+    </div>
+  </div>
+
+  <div class="footer">
+    <img src="logos/ministeriologo.png" alt="Ministerio" class="footer-logo">
+    <img src="logos/pronacejlogo.png" alt="Pronacej" class="footer-logo">
+  </div>
+</div>

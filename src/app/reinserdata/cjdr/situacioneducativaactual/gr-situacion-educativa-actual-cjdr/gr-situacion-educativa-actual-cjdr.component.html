@@ -1,1 +1,36 @@
-<p>gr-situacion-educativa-actual-cjdr works!</p>
+<div class="main-container">
+    <div class="header">
+      <button class="home-button" (click)="onHome()">
+        <i class="fas fa-home"></i>
+      </button>
+      <h1>Situación Educativa Actual</h1>
+      <button class="back-button" (click)="onBack()">Atrás</button>
+    </div>
+
+    <div class="content">
+      <div class="total-container">
+        <div class="total-value">{{ totalPoblacion }}</div>
+        <div class="total-label">Total</div>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
+      </div>
+
+      <div class="ages-list">
+        <div class="age-item" *ngFor="let item of situacionList; let i = index">
+          <div class="percentage-box" [style.background-color]="colors[i]">
+            {{ item.value }}
+          </div>
+          <div class="age-name">
+            {{ item.label }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <img src="logos/ministeriologo.png" alt="Ministerio" class="footer-logo">
+      <img src="logos/pronacejlogo.png" alt="Pronacej" class="footer-logo">
+    </div>
+  </div>

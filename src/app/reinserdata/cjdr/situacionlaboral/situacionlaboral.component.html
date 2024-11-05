@@ -1,1 +1,62 @@
-<p>situacionlaboral works!</p>
+<div class="container">
+    <div class="header">
+      <button class="home-button" (click)="navigateTo('/')" >
+        <i class="fas fa-home"></i>
+      </button>
+      
+      <div class="title">
+        <h2>Elegir fecha del gráfico</h2>
+      </div>
+      
+      <button class="back-button" (click)="goBack()">
+        Atrás
+      </button>
+    </div>
+
+    <div class="date-section">
+      <h3>Fecha a buscar</h3>
+      <div class="date-input-container">
+        <input 
+          type="text" 
+          (change)="onDateChange($event)" 
+          placeholder="YYYY-MM" 
+          class="date-picker"
+        >
+        <button 
+          class="search-button" 
+          (click)="searchData()"
+        >
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-options">
+      <div class="checkbox-container">
+        <input 
+          type="radio" 
+          id="incluirEstadoIng" 
+          name="filterType" 
+          [checked]="includeEstadoIng"
+          (change)="setFilterType(true)"
+        >
+        <label for="incluirEstadoIng">ACTIVO</label>
+      </div>
+      
+      <div class="checkbox-container">
+        <input 
+          type="radio" 
+          id="noIncluirEstadoIng" 
+          name="filterType" 
+          [checked]="!includeEstadoIng"
+          (change)="setFilterType(false)"
+        >
+        <label for="noIncluirEstadoIng">ATENDIDO</label>
+      </div>
+    </div>
+
+    <div class="footer">
+      <img src="logos/ministeriologo.png" alt="Ministerio" class="footer-logo">
+      <img src="logos/pronacejlogo.png" alt="Pronacej" class="footer-logo">
+    </div>
+  </div>
