@@ -54,7 +54,7 @@
   
   .category-card {
     flex: 1;
-    padding: 25px 16px;
+    padding: 25px 12px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -71,7 +71,7 @@
     img {
       width: 100px;
       height: 100px;
-      margin-bottom: 16px;
+      margin-bottom: 0px;
       filter: brightness(0) invert(1);
     }
   
